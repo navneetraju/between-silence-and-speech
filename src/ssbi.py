@@ -18,6 +18,7 @@ def compute_ssbi_score(
         beta: float = 1 / 4,
         gamma: float = 1 / 4,
         delta: float = 1 / 4,
+        return_scalar: bool = True,
 ) -> float:
     """
     Computes the enhanced Silence--Speech Bias Index (SSBI) over a batch of samples.
@@ -87,4 +88,6 @@ def compute_ssbi_score(
 
     # Final SSBI: average of MD and BB.
     ssbi = 0.5 * (multilingual_deviation + baseline_bias)
-    return float(np.mean(ssbi))
+    if return_scalar:
+        return float(np.mean(ssbi))
+    return ssbi
