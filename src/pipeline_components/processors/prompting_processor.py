@@ -4,6 +4,7 @@ from src.pipeline_components.clients.llamaapi_client import call_llm as call_llm
 from src.pipeline_components.clients.gemini_client import call_llm as call_llm_gemini
 from src.pipeline_components.clients.grok_client import call_llm as call_llm_grok
 from src.pipeline_components.clients.anthropic_client import call_llm as call_llm_anthropic
+from src.pipeline_components.clients.vertex_ai_client import call_llm as call_llm_vertex_ai
 import traceback
 import os
 import pandas as pd
@@ -30,6 +31,10 @@ async def run_prompt(idx: int, row: pd.Series, model: str) -> dict:
         response_language1 = await call_llm_anthropic(prompt_language1, model=model)
         response_language2 = await call_llm_anthropic(prompt_language2, model=model)
         response_baseline = await call_llm_anthropic(prompt_baseline, model=model)
+    elif model.startswith("project"):
+        response_language1 = await call_llm_vertex_ai(prompt_language1, model=model)
+        response_language2 = await call_llm_vertex_ai(prompt_language2, model=model)
+        response_baseline = await call_llm_vertex_ai(prompt_baseline, model=model)
     else:
         response_language1 = await call_llm_llama(prompt_language1, model=model)
         response_language2 = await call_llm_llama(prompt_language2, model=model)

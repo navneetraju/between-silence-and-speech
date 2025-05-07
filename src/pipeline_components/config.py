@@ -4,7 +4,7 @@ GOOGLE_PROJECT_ID = ""
 GOOGLE_PROJECT_LOCATION = ""
 XAI_API_KEY = ""
 ANTHROPIC_API_KEY = ""
-
+GEMINI_ENDPOINT_ID = ""
 LLM_API_MODEL_LIST = [
     "llama3-8b",
     "llama3.2-3b",
@@ -32,6 +32,11 @@ LLM_API_MODEL_LIST = [
     "claude-3-opus-20240229"
 ]
 
+# LLM_API_MODEL_LIST = [
+#     "projects/727357774888/locations/us-central1/endpoints/5151331822897987584",
+#     "google/gemini-2.0-flash-001",
+# ]
+
 LLM_PROMPTING_CONCURRENCY = {
     "llama3-8b": 5,
     "llama3.2-3b": 5,
@@ -56,5 +61,6 @@ LLM_PROMPTING_CONCURRENCY = {
     "grok-2-1212": 5,
     "claude-3-7-sonnet-20250219": 2,
     "claude-3-5-haiku-20241022": 2,
-    "claude-3-opus-20240229": 2
+    "claude-3-opus-20240229": 2,
+    "projects/727357774888/locations/us-central1/endpoints/5151331822897987584": 2,
 }
